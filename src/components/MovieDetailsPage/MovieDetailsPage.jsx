@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import * as API from '../../services/api';
-import {MoviePageText,Poster,MoviePageTitle,GenresItem,MoviePageContent,MoviePageDescription} from './MovieDetailsPageStyled';
+import {
+  MoviePageText,
+  Poster,
+  MoviePageTitle,
+  GenresItem,
+  MoviePageContent,
+  MoviePageDescription,
+} from './MovieDetailsPageStyled';
 
 export const MovieDetailsPage = () => {
   const pageId = 414906;
@@ -22,21 +29,23 @@ export const MovieDetailsPage = () => {
       {movieInfo ? (
         <>
           <MoviePageContent>
-              <Poster
-                src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}
-                alt={movieInfo.title}
-              />
+            <Poster
+              src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}
+              alt={movieInfo.title}
+            />
             <MoviePageDescription>
               <h2>
                 {movieInfo.title} ({movieInfo.release_date.slice(0, 4)})
               </h2>
-              <MoviePageText>
-                User score {movieInfo.vote_average}
-              </MoviePageText>
+              <MoviePageText>User score {movieInfo.vote_average}</MoviePageText>
               <MoviePageTitle>Overview</MoviePageTitle>
               <MoviePageText>{movieInfo.overview}</MoviePageText>
               <MoviePageTitle>Genres</MoviePageTitle>
-              <MoviePageText>{movieInfo.genres.map(film =><GenresItem key={film.id}>{film.name}</GenresItem> )}</MoviePageText>
+              <MoviePageText>
+                {movieInfo.genres.map(film => (
+                  <GenresItem key={film.id}>{film.name}</GenresItem>
+                ))}
+              </MoviePageText>
             </MoviePageDescription>
           </MoviePageContent>
           <MoviePageText>Additional information</MoviePageText>
