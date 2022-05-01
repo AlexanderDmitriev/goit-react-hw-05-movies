@@ -15,7 +15,6 @@ export const MovieDetailsPage = () => {
 
   useEffect(() => {
     API.getMovieDetails(pageId).then(response => {
-      console.log(response.data);
       if (response != null) {
         setMovieInfo(response.data);
       } else {
