@@ -4,7 +4,7 @@ const Navigation = () => {
   return (
     <header>
       <NavigationContainer>
-        <NavigationLink exact to="/">
+        <NavigationLink exact="true" to="/">
           Home
         </NavigationLink>
 

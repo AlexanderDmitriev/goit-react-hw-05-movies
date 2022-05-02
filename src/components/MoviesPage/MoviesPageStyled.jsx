@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Form, Field } from 'formik';
+import { Field } from 'formik';
 
 export const SearchFormButton = styled.button`
   height: 25px;

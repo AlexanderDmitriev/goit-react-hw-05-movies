@@ -15,5 +15,8 @@ export const NavigationLink = styled(NavLink)`
   padding: 8px;
   :hover,:focus {
     color: red;
+  };
+  &.active{
+    color: blue;
   }
 `;
