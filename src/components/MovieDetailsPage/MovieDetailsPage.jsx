@@ -8,6 +8,7 @@ import {
   MoviePageContent,
   MoviePageDescription,
 } from './MovieDetailsPageStyled';
+import {Spinner } from '../AppStyled';
 
 const MovieDetailsPage = () => {
   const pageId = 414906;
@@ -54,7 +55,7 @@ const MovieDetailsPage = () => {
           </ul>
         </>
       ) : (
-        <p>Loading...</p>
+        <Spinner/>
       )}
     </>
   );
