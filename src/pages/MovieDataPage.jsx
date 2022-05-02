@@ -1,6 +1,6 @@
-import { Reviews } from '../components/Reviews/Reviews';
-import { MovieDetailsPage } from '../components/MovieDetailsPage/MovieDetailsPage';
-import {Cast} from '../components/Cast/Cast'
+import Reviews  from '../components/Reviews';
+import  MovieDetailsPage  from '../components/MovieDetailsPage';
+import Cast from '../components/Cast'
 export const MovieDataPage = () => {
   return (
     <>

@@ -4,7 +4,7 @@ import * as API from '../../services/api';
 import { CastItem } from './CastItem';
 import {CastText} from './CastStyled';
 
-export const Cast = () => {
+const Cast = () => {
   const pageId = 414906;
   const [cast, setCast] = useState(null);
 
@@ -43,3 +43,5 @@ CastItem.propTypes = {
   name: PropTypes.string,
   character: PropTypes.string,
 };
+
+export default Cast;

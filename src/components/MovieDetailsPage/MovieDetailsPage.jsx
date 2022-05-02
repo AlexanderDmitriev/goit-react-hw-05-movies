@@ -9,7 +9,7 @@ import {
   MoviePageDescription,
 } from './MovieDetailsPageStyled';
 
-export const MovieDetailsPage = () => {
+const MovieDetailsPage = () => {
   const pageId = 414906;
   const [movieInfo, setMovieInfo] = useState(null);
 
@@ -59,3 +59,5 @@ export const MovieDetailsPage = () => {
     </>
   );
 };
+
+export default MovieDetailsPage;

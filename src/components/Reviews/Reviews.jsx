@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import * as API from '../../services/api';
 import { ReviewText } from './ReviewsStyled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const [review, setReview] = useState(null);
   const pageId = 414906;
 
@@ -41,3 +41,5 @@ ReviewsItem.propTypes = {
   author: PropTypes.string,
   content: PropTypes.string,
 };
+
+export default Reviews;
