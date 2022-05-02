@@ -1,10 +1,11 @@
 import { HiOutlineEmojiHappy } from 'react-icons/hi';
+import {CastStyledItem,CastText,ActorsPhoto} from './CastStyled';
 
 export const CastItem = ({ photo, name, character }) => {
   return (
-    <li>
+    <CastStyledItem>
       {photo ? (
-        <img
+        <ActorsPhoto
           src={`https://image.tmdb.org/t/p/original${photo}`}
           alt={name}
           width="128"
@@ -12,8 +13,8 @@ export const CastItem = ({ photo, name, character }) => {
       ) : (
         <HiOutlineEmojiHappy size="128px" />
       )}
-      <p>{name}</p>
-      <p>{character}</p>
-    </li>
+      <CastText>{name}</CastText>
+      <CastText>{character}</CastText>
+    </CastStyledItem>
   );
 };

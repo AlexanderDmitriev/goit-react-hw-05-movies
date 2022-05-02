@@ -1,13 +1,14 @@
 import { ToastContainer } from 'react-toastify';
 import GlobalStyle from '../GlobalStyle';
-import {MovieDataPage} from '../pages/MovieDataPage'
+import {MovieDataPage} from '../pages/MovieDataPage';
+import {Container} from './AppStyled';
 
 export const App = () => {
   return (
-    <div>
+    <Container>
       <GlobalStyle />
       <MovieDataPage/>
       <ToastContainer autoClose={2000} />
-    </div>
+    </Container>
   );
 };
