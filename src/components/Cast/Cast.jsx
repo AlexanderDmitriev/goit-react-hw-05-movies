@@ -1,22 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from "react-router-dom";
 import * as API from '../../services/api';
 import { CastItem } from './CastItem';
 import {CastText} from './CastStyled';
 
 const Cast = () => {
-  const pageId = 414906;
   const [cast, setCast] = useState(null);
+  const {movieId} = useParams();
 
   useEffect(() => {
-    API.getCast(pageId).then(response => {
+    API.getCast(movieId).then(response => {
       if (response != null) {
         setCast(response.data.cast);
       } else {
         return;
       }
     });
-  }, [pageId]);
+  }, [movieId]);
 
   return (
     <>

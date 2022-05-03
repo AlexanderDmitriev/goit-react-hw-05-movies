@@ -14,18 +14,10 @@ export const App = () => {
       <GlobalStyle />
       <Navigation />
       <Routes>
-        <Route path="/" exact>
-          <HomePage/>
-        </Route>
-        <Route path="/movies">
-          <MovieDataPage />
-        </Route>
-        <Route path="/movies/:movieId">
-          <MoviesPage />
-        </Route>
-        <Route>
-          <NotFoundPage />
-        </Route>
+        <Route path="/" exact element={<HomePage />} />
+        <Route path="/movies" element={<MoviesPage  />} />
+        <Route path="/movies/:movieId" element={< MovieDataPage/>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
       <ToastContainer autoClose={2000} />

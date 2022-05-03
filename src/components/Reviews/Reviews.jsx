@@ -1,22 +1,23 @@
 import { ReviewsItem } from './ReviewsItem';
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import * as API from '../../services/api';
 import { ReviewText } from './ReviewsStyled';
 
 const Reviews = () => {
   const [review, setReview] = useState(null);
-  const pageId = 414906;
+  const {movieId} = useParams();
 
   useEffect(() => {
-    API.getReviews(pageId).then(response => {
+    API.getReviews(movieId).then(response => {
       if (response != null) {
         setReview(response.data.results);
       } else {
         return;
       }
     });
-  }, [pageId]);
+  }, [movieId]);
 
   return (
     <>

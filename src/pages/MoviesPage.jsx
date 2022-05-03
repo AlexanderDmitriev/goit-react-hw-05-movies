@@ -8,6 +8,7 @@ import {
   FilmList,
   FilmLink
 } from '../components/MoviesPage/MoviesPageStyled';
+//import { useHistory } from "react-router-dom";
 
 export const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
@@ -22,7 +23,6 @@ export const MoviesPage = () => {
       if (response != null) {
         setMovies(response.data.results);
         setLoading(false);
-        console.log(movies);
       } else {
         return;
       }
@@ -30,8 +30,15 @@ export const MoviesPage = () => {
     resetForm();
   };
 
+ /*  const history = useHistory();
+
+  const handleClick = () => {
+    history.push("/home");
+  }; */
+
   return (
     <>
+      <button type='click' /* onClick={handleClick} */>Go back</button>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <SearchFormInput
@@ -49,7 +56,7 @@ export const MoviesPage = () => {
         <ul>
           {movies.map(film => (
             <FilmList key={film.id}>
-              <FilmLink>{film.title} ({film.release_date.slice(0, 4)})</FilmLink>
+              <FilmLink to={`/movies/${film.id}`}>{film.title} ({film.release_date.slice(0, 4)})</FilmLink>
             </FilmList>
           ))}
         </ul>

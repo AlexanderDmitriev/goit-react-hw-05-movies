@@ -7,22 +7,24 @@ import {
   GenresItem,
   MoviePageContent,
   MoviePageDescription,
+  DetailsLink
 } from './MovieDetailsPageStyled';
 import {Spinner } from '../AppStyled';
+import { Outlet, useParams } from "react-router-dom";
 
 const MovieDetailsPage = () => {
-  const pageId = 414906;
+  const {movieId} = useParams();
   const [movieInfo, setMovieInfo] = useState(null);
 
   useEffect(() => {
-    API.getMovieDetails(pageId).then(response => {
+    API.getMovieDetails(movieId).then(response => {
       if (response != null) {
         setMovieInfo(response.data);
       } else {
         return;
       }
     });
-  }, [pageId]);
+  }, [movieId]);
 
   return (
     <>
@@ -50,13 +52,14 @@ const MovieDetailsPage = () => {
           </MoviePageContent>
           <MoviePageText>Additional information</MoviePageText>
           <ul>
-            <li>Cast</li>
-            <li>Reviews</li>
+            <DetailsLink to={`/movies/${movieId}/cast`}>Cast</DetailsLink>
+            <DetailsLink to={`/movies/${movieId}/reviews`}>Reviews</DetailsLink>
           </ul>
         </>
       ) : (
         <Spinner/>
       )}
+      <Outlet/>
     </>
   );
 };

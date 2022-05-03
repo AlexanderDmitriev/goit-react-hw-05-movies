@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { NavLink } from 'react-router-dom';
 
 export const MoviePageText = styled.p`
   font-family: Raleway, sans-serif;
@@ -33,3 +34,13 @@ export const MoviePageContent = styled.div`
 export const MoviePageDescription = styled.div`
   padding: 15px;
 `;
+
+export const DetailsLink = styled(NavLink)`
+display: block;
+font-family: Raleway, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.2;
+  text-decoration: none;
+  color: grey;
+  `;

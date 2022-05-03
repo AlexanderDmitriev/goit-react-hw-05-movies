@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import { NavLink } from 'react-router-dom';
 
 export const SearchFormButton = styled.button`
   height: 25px;
@@ -32,10 +33,11 @@ list-style: none;
 }
 `;
 
-export const FilmLink = styled.p`
+export const FilmLink = styled(NavLink)`
 font-family: Raleway, sans-serif;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.2;
   color: grey;
+  text-decoration: none;
   `;
