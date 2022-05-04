@@ -1,18 +1,23 @@
-import { ReviewsItem } from './ReviewsItem';
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as API from '../../services/api';
 import { ReviewText } from './ReviewsStyled';
+import { ReviewsItem } from './ReviewsItem';
+import { Spinner } from '../AppStyled';
 
 const Reviews = () => {
   const [review, setReview] = useState(null);
-  const {movieId} = useParams();
+  const [loading, setLoading] = useState(false);
+  const { movieId } = useParams();
 
+  //Получаем даннык об актёрах и пока загружаем включаем спиннер
   useEffect(() => {
     API.getReviews(movieId).then(response => {
+      setLoading(true);
       if (response != null) {
         setReview(response.data.results);
+        setLoading(false);
       } else {
         return;
       }
@@ -32,6 +37,9 @@ const Reviews = () => {
           ))}
         </ul>
       ) : (
+        <Spinner />
+      )}
+      {loading && (
         <ReviewText>Sorry, we don't have any reviews for this movie</ReviewText>
       )}
     </>

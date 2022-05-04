@@ -1,4 +1,4 @@
-import {ReviewText,ReviewTitle,ReviewItem} from './ReviewsStyled';
+import { ReviewText, ReviewTitle, ReviewItem } from './ReviewsStyled';
 
 export const ReviewsItem = ({ author, content }) => {
   return (

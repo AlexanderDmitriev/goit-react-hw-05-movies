@@ -2,7 +2,7 @@
 import  MovieDetailsPage  from '../components/MovieDetailsPage';
 //import Cast from '../components/Cast'
 import { Outlet } from 'react-router-dom';
-export const MovieDataPage = () => {
+ const MovieDataPage = () => {
   return (
     <div>
       <MovieDetailsPage/>
@@ -12,3 +12,5 @@ export const MovieDataPage = () => {
     </div>
   );
 };
+
+export default MovieDataPage;

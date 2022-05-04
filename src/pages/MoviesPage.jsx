@@ -8,11 +8,17 @@ import {
   FilmList,
   FilmLink
 } from '../components/MoviesPage/MoviesPageStyled';
-//import { useHistory } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
-export const MoviesPage = () => {
+const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const goBack = () => {
+    console.log(location);
+    navigate(-1)};
 
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };
@@ -38,7 +44,7 @@ export const MoviesPage = () => {
 
   return (
     <>
-      <button type='click' /* onClick={handleClick} */>Go back</button>
+      <button type='click'  onClick={goBack} >Go back</button>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <SearchFormInput
@@ -64,3 +70,5 @@ export const MoviesPage = () => {
     </>
   );
 };
+
+export default MoviesPage;
