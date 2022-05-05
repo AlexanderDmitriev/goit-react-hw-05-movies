@@ -4,34 +4,24 @@ import { ToastContainer } from 'react-toastify';
 import GlobalStyle from '../GlobalStyle';
 import { Container, Spinner } from './AppStyled';
 import Navigation from '../components/Navigation/Navigation';
-import GoBackButton from '../components/GoBackButton'
+import GoBackButton from '../components/GoBackButton';
 
-const HomePage = lazy(() =>
-  import('../pages/HomePage' /* webpackChunkName: "HomePage" */)
-);
-const MoviesPage = lazy(() =>
-  import('../pages/MoviesPage' /* webpackChunkName: "MoviesPage" */)
-);
-const MovieDataPage = lazy(() =>
-  import('../pages/MovieDataPage' /* webpackChunkName: "MovieDataPage" */)
-);
-const Cast = lazy(() => import('./Cast' /* webpackChunkName: "Cast" */));
-const Reviews = lazy(() =>
-  import('./Reviews' /* webpackChunkName: "Reviews" */)
-);
-const NotFoundPage = lazy(() =>
-  import('../pages/NotFoundPage' /* webpackChunkName: "NotFoundPage" */)
-);
+const HomePage = lazy(() => import('../pages/HomePage'));
+const MoviesPage = lazy(() => import('../pages/MoviesPage'));
+const MovieDataPage = lazy(() => import('../pages/MovieDataPage'));
+const Cast = lazy(() => import('./Cast'));
+const Reviews = lazy(() => import('./Reviews'));
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
   return (
     <Container>
       <GlobalStyle />
       <Navigation />
-      <GoBackButton/>
+      <GoBackButton />
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path="/" exact element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<MovieDataPage />}>
             <Route path="cast" element={<Cast />} />

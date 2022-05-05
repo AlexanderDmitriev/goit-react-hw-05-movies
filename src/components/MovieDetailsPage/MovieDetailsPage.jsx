@@ -19,7 +19,6 @@ const MovieDetailsPage = () => {
 
   useEffect(() => {
     API.getMovieDetails(movieId).then(response => {
-      console.log(location);
       location.state={from:`${location.pathname}`};
       if (response != null) {
         setMovieInfo(response.data);

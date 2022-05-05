@@ -1,43 +1,40 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
 import { NavLink } from 'react-router-dom';
+import { CustomButton } from '../GoBackButton/GoBackButton';
 
-export const SearchFormButton = styled.button`
-  height: 25px;
-  opacity: 0.6;
-  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  cursor: pointer;
-  outline: none;
-  margin-left: 5px;
-  :hover,
-  :focus {
-    opacity: 1;
-  }
+export const SearchFormButton = styled(CustomButton)`
+display: inline;
+  margin-left: ${props => props.theme.spacing(1)};
 `;
 
 export const SearchFormInput = styled(Field)`
   width: 50%;
-  font-size: 16px;
+  font-size: ${props => props.theme.spacing(5)};
   outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
+  padding-left: ${props => props.theme.spacing(1)};
+  padding-right: ${props => props.theme.spacing(1)};
   ::placeholder {
-    font-size:14px;
+    font-size: ${props => props.theme.spacing(3.5)};
   }
 `;
 
 export const FilmList = styled.li`
-list-style: none;
-:not(:last-child) {
-  margin-bottom: 4px;
-}
+  list-style: none;
+  :not(:last-child) {
+    ${props => props.theme.spacing(1)};
+  }
 `;
 
 export const FilmLink = styled(NavLink)`
-font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 500;
-  font-size: 14px;
+  font-size: ${props => props.theme.spacing(3.5)};
   line-height: 1.2;
-  color: grey;
+  color: ${props => props.theme.colors.textColor};
   text-decoration: none;
-  `;
+  :hover,
+  :focus {
+    color: ${props => props.theme.colors.focusColor};
+  }
+`;

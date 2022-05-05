@@ -4,6 +4,8 @@ export const theme = {
       blue:'blue',
       focusColor: 'red',
       activeColor: 'blue',
+      textColor: 'grey',
+      titleColor: 'black',
     },
     spacing: value => `${4 * value}px`,
   };

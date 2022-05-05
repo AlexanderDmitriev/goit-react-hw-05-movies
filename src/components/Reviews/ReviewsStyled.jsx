@@ -6,7 +6,7 @@ export const ReviewText = styled.p`
   font-weight: 500;
   font-size: ${props => props.theme.spacing(3)};
   line-height: 1.2;
-  color: grey;
+  color: ${props => props.theme.colors.textColor};
 `;
 
 export const ReviewTitle = styled.h2`
@@ -14,7 +14,7 @@ export const ReviewTitle = styled.h2`
   font-weight: 700;
   font-size: ${props => props.theme.spacing(5)};
   line-height: 1.2;
-  color: black;
+  color: ${props => props.theme.colors.titleColor};
 `;
 
 //Стили блока для отдельного отзыва

@@ -17,7 +17,7 @@ export const CastText = styled.p`
   font-weight: 500;
   font-size: ${props => props.theme.spacing(3)};
   line-height: 1.2;
-  color: grey;
+  color: ${props => props.theme.colors.textColor};
 `;
 
 export const ActorsPhoto = styled.img`

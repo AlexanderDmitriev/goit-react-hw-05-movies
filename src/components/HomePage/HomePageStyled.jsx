@@ -2,22 +2,25 @@ import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 
 export const HotFilmLink = styled(NavLink)`
-font-family: Raleway, sans-serif;
+  font-family: Raleway, sans-serif;
   font-weight: 500;
-  font-size: 14px;
+  font-size: ${props => props.theme.spacing(4)};
   line-height: 1.2;
   text-decoration: none;
-  color: grey;
-  `;
+  color: ${props => props.theme.colors.textColor};
+  :hover,
+  :focus {
+    color: ${props => props.theme.colors.focusColor};
+  }
+`;
 
 export const HotFilmItem = styled.li`
-list-style: none;
+  list-style: none;
 `;
 
 export const HomePageTitle = styled.h2`
-  font-family: Raleway, sans-serif;
   font-weight: 700;
-  font-size: 18px;
+  font-size: ${props => props.theme.spacing(5)};
   line-height: 1.2;
-  color: black;
+  color: ${props => props.theme.colors.titleColor};
 `;
