@@ -15,13 +15,14 @@ const HomePage = () => {
 
   useEffect(() => {
     API.getTranding().then(response => {
+      location.state={from:`${location.pathname}`};
       if (response != null) {
         setHotFilms(response.data);
       } else {
         return;
       }
     });
-  }, []);
+  }, [location]);
 
   return (
     <>

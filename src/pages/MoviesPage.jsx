@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as API from '../services/api';
 import { Spinner } from '../components/AppStyled';
@@ -6,19 +7,13 @@ import {
   SearchFormButton,
   SearchFormInput,
   FilmList,
-  FilmLink
+  FilmLink,
 } from '../components/MoviesPage/MoviesPageStyled';
-import { useNavigate, useLocation } from "react-router-dom";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const goBack = () => {
-    console.log(location.state.from);
-    navigate(-1)};
 
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };
@@ -36,15 +31,8 @@ const MoviesPage = () => {
     resetForm();
   };
 
- /*  const history = useHistory();
-
-  const handleClick = () => {
-    history.push("/home");
-  }; */
-
   return (
     <>
-      <button type='click'  onClick={goBack} >Go back</button>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         <Form>
           <SearchFormInput
@@ -62,7 +50,14 @@ const MoviesPage = () => {
         <ul>
           {movies.map(film => (
             <FilmList key={film.id}>
-              <FilmLink to={`/movies/${film.id}`}>{film.title} ({film.release_date.slice(0, 4)})</FilmLink>
+              <FilmLink
+                to={{
+                  pathname: `/movies/${film.id}`,
+                  state: { from: location },
+                }}
+              >
+                {film.title} ({film.release_date.slice(0, 4)})
+              </FilmLink>
             </FilmList>
           ))}
         </ul>

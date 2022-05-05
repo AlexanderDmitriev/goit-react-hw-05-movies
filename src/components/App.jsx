@@ -4,6 +4,7 @@ import { ToastContainer } from 'react-toastify';
 import GlobalStyle from '../GlobalStyle';
 import { Container, Spinner } from './AppStyled';
 import Navigation from '../components/Navigation/Navigation';
+import GoBackButton from '../components/GoBackButton'
 
 const HomePage = lazy(() =>
   import('../pages/HomePage' /* webpackChunkName: "HomePage" */)
@@ -27,6 +28,7 @@ export const App = () => {
     <Container>
       <GlobalStyle />
       <Navigation />
+      <GoBackButton/>
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="/" exact element={<HomePage />} />

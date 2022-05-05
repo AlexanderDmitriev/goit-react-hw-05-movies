@@ -10,21 +10,24 @@ import {
   DetailsLink
 } from './MovieDetailsPageStyled';
 import {Spinner } from '../AppStyled';
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, useLocation } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const {movieId} = useParams();
   const [movieInfo, setMovieInfo] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     API.getMovieDetails(movieId).then(response => {
+      console.log(location);
+      location.state={from:`${location.pathname}`};
       if (response != null) {
         setMovieInfo(response.data);
       } else {
         return;
       }
     });
-  }, [movieId]);
+  }, [location, movieId]);
 
   return (
     <>
