@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import * as API from '../services/api';
 import { Spinner } from '../components/AppStyled';
 import {
@@ -10,6 +11,7 @@ import {
 const HomePage = () => {
   //Хук для хранения трендовых фильмов
   const [hotFilms, setHotFilms] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
     API.getTranding().then(response => {
@@ -28,7 +30,12 @@ const HomePage = () => {
         <ul>
           {hotFilms.results.map(film => (
             <HotFilmItem key={film.id}>
-              <HotFilmLink to={`/movies/${film.id}`}>
+              <HotFilmLink
+                to={{
+                  pathname: `/movies/${film.id}`,
+                  state: { from: location },
+                }}
+              >
                 {film.title}
                 {film.name}
               </HotFilmLink>

@@ -17,7 +17,7 @@ const MoviesPage = () => {
   const location = useLocation();
 
   const goBack = () => {
-    console.log(location);
+    console.log(location.state.from);
     navigate(-1)};
 
   //При начальном рендере ключевое слово для поиска пустая строка
