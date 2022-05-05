@@ -1,5 +1,5 @@
 import { HiOutlineEmojiHappy } from 'react-icons/hi';
-import {CastStyledItem,CastText,ActorsPhoto} from './CastStyled';
+import { CastStyledItem, CastText, ActorsPhoto } from './CastStyled';
 
 export const CastItem = ({ photo, name, character }) => {
   return (

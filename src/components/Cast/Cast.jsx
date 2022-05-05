@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { useParams } from "react-router-dom";
 import * as API from '../../services/api';
 import { CastItem } from './CastItem';
-import {CastText} from './CastStyled';
+import { CastText,ActorsList } from './CastStyled';
+import { Spinner } from '../AppStyled';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
-  const {movieId} = useParams();
+  // Индикатор загрузки данных
+  const [loading, setLoading] = useState(false);
+  const { movieId } = useParams();
 
   useEffect(() => {
     API.getCast(movieId).then(response => {
+      setLoading(true);
       if (response != null) {
         setCast(response.data.cast);
+        setLoading(false);
       } else {
         return;
       }
@@ -22,7 +27,7 @@ const Cast = () => {
   return (
     <>
       {cast ? (
-        <ul>
+        <ActorsList>
           {cast.map(actor => (
             <CastItem
               key={actor.id}
@@ -31,9 +36,14 @@ const Cast = () => {
               character={actor.character}
             />
           ))}
-        </ul>
+        </ActorsList>
       ) : (
-        <CastText>Sorry, we don't have any cast information for this movie</CastText>
+        <Spinner />
+      )}
+      {loading && (
+        <CastText>
+          Sorry, we don't have any cast information for this movie
+        </CastText>
       )}
     </>
   );
