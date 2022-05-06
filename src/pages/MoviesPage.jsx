@@ -51,10 +51,8 @@ const MoviesPage = () => {
           {movies.map(film => (
             <FilmList key={film.id}>
               <FilmLink
-                to={{
-                  pathname: `/movies/${film.id}`,
-                  state: { from: location },
-                }}
+                to={`/movies/${film.id}`}
+                state = {{ from: location }}
               >
                 {film.title} ({film.release_date.slice(0, 4)})
               </FilmLink>

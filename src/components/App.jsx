@@ -21,14 +21,13 @@ export const App = () => {
       <GoBackButton />
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movies/:movieId" element={<MovieDataPage />}>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Route>
-
-          <Route path="*" element={<NotFoundPage />} />
+            <Route path="/" element={<HomePage />} />
+            <Route path="/movies" element={<MoviesPage />} />
+            <Route path="/movies/:movieId" element={<MovieDataPage />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
       <ToastContainer autoClose={2000} />

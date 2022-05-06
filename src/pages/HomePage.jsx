@@ -32,10 +32,8 @@ const HomePage = () => {
           {hotFilms.results.map(film => (
             <HotFilmItem key={film.id}>
               <HotFilmLink
-                to={{
-                  pathname: `/movies/${film.id}`,
-                  state: { from: location },
-                }}
+                to={`/movies/${film.id}`}
+                state = {{ from: location }}
               >
                 {film.title}
                 {film.name}
