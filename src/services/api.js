@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { toast } from 'react-toastify';
+//import { toast } from 'react-toastify';
 import { BASIC_URL, PERSONAL_KEY } from './basicData';
 
 const getData = async url => {
@@ -7,7 +7,8 @@ const getData = async url => {
     const response = await axios.get(url);
     return response;
   } catch (error) {
-    toast.error(error.message)
+    //toast.error(error.message)
+    //alert(error);
   }
 };
 

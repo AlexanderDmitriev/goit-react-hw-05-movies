@@ -21,7 +21,7 @@ const HomePage = () => {
       } else {
         return;
       }
-    });
+    })
   }, [location]);
 
   return (
