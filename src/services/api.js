@@ -1,30 +1,20 @@
 import axios from 'axios';
-//import { toast } from 'react-toastify';
+import  toast  from 'react-hot-toast';
 import { BASIC_URL, PERSONAL_KEY } from './basicData';
 
 const getData = async url => {
   try {
     const response = await axios.get(url);
+    
     return response;
   } catch (error) {
-    //toast.error(error.message)
-    //alert(error);
+    toast.error('Sorry, We don`t have this film`s information');
   }
 };
 
 export const getReviews = movieId => {
   const url = `${BASIC_URL}3/movie/${movieId}/reviews?api_key=${PERSONAL_KEY}&language=en-US&page=1`;
   return getData(url);
-  /* try {
-    const response = await axios.get(url);
-    
-    //Проверяем наличие пришедших данных
-    if (response.data.total_results > 0) {
-      return response;
-    }
-  } catch (error) {
-    alert(error);
-  } */
 };
 
 export const getMovieDetails = movieId => {

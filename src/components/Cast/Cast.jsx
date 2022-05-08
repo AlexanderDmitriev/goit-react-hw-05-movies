@@ -8,16 +8,15 @@ import { Spinner } from '../AppStyled';
 
 const Cast = () => {
   const [cast, setCast] = useState(null);
-  // Индикатор загрузки данных
-  const [loading, setLoading] = useState(false);
+  const [noData, setNoData] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
     API.getCast(movieId).then(response => {
-      setLoading(true);
       if (response != null) {
         setCast(response.data.cast);
-        setLoading(false);
+        if(response.data.cast.length===0){
+          setNoData(true);}
       } else {
         return;
       }
@@ -40,7 +39,7 @@ const Cast = () => {
       ) : (
         <Spinner />
       )}
-      {loading && (
+      {noData && (
         <CastText>
           Sorry, we don't have any cast information for this movie
         </CastText>

@@ -10,11 +10,12 @@ import {
   DetailsLink
 } from './MovieDetailsPageStyled';
 import {Spinner } from '../AppStyled';
-import { Outlet, useParams, useLocation } from "react-router-dom";
+import { Outlet, useParams, useLocation,useNavigate } from "react-router-dom";
 
 const MovieDetailsPage = () => {
   const {movieId} = useParams();
   const [movieInfo, setMovieInfo] = useState(null);
+  const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
@@ -23,10 +24,14 @@ const MovieDetailsPage = () => {
       if (response != null) {
         setMovieInfo(response.data);
       } else {
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
+        
         return;
       }
     });
-  }, [location, movieId]);
+  }, [location, movieId, navigate]);
 
   return (
     <>

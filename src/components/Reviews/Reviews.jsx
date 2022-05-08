@@ -8,16 +8,16 @@ import { Spinner } from '../AppStyled';
 
 const Reviews = () => {
   const [review, setReview] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [noData, setNoData] = useState(false);
   const { movieId } = useParams();
 
   //Получаем даннык об актёрах и пока загружаем включаем спиннер
   useEffect(() => {
     API.getReviews(movieId).then(response => {
-      setLoading(true);
       if (response != null) {
         setReview(response.data.results);
-        setLoading(false);
+        if(response.data.results.length===0){
+          setNoData(true);}
       } else {
         return;
       }
@@ -39,7 +39,7 @@ const Reviews = () => {
       ) : (
         <Spinner />
       )}
-      {loading && (
+      {(noData) && (
         <ReviewText>Sorry, we don't have any reviews for this movie</ReviewText>
       )}
     </>
