@@ -1,5 +1,5 @@
-import { Route, Routes, useNavigate, useLocation } from 'react-router-dom';
-import { lazy, Suspense,useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 //import { ToastContainer } from 'react-toastify';
 import GlobalStyle from '../GlobalStyle';
 import { Container, Spinner } from './AppStyled';
@@ -12,8 +12,6 @@ const MovieDataPage = lazy(() => import('../pages/MovieDataPage'));
 const Cast = lazy(() => import('./Cast'));
 const Reviews = lazy(() => import('./Reviews'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
-
-
 
 
 export const App = () => {
