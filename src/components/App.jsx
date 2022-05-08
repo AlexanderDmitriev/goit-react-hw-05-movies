@@ -18,14 +18,14 @@ const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
 
-  const navigate = useNavigate();
+/*   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
     if (location.pathname === '/goit-react-hw-05-movies') {
       navigate('/');
     }
-  }, [location.pathname, navigate]);
+  }, [location.pathname, navigate]); */
 
   return (
     <Container>
