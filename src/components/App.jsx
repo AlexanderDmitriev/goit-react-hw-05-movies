@@ -1,7 +1,7 @@
 import {
   Route,
   Routes,
-    /* useNavigate, useLocation */
+  /* useNavigate, useLocation */
 } from 'react-router-dom';
 import { lazy, Suspense /* useEffect */ } from 'react';
 import { Toaster } from 'react-hot-toast';
@@ -35,10 +35,7 @@ export const App = () => {
       <GoBackButton />
       <Suspense fallback={<Spinner />}>
         <Routes>
-          <Route
-            path="/"
-            element={<HomePage />}
-          />
+          <Route path="/" element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movies/:movieId" element={<MovieDataPage />}>
             <Route path="cast" element={<Cast />} />
