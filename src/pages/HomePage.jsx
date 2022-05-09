@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import * as API from '../services/api';
 import { Spinner } from '../components/AppStyled';
 import {
@@ -12,6 +12,9 @@ const HomePage = () => {
   //Хук для хранения трендовых фильмов
   const [hotFilms, setHotFilms] = useState(null);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  navigate('/');
 
   useEffect(() => {
     API.getTranding().then(response => {
