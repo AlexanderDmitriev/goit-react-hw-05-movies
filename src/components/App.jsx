@@ -18,15 +18,6 @@ const Reviews = lazy(() => import('./Reviews'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
-  //Костыль в надежде решить проблему
-  /*   const navigate = useNavigate();
-  const location = useLocation(); */
-
-  /*   useEffect(() => {
-    if (location.pathname === '/goit-react-hw-05-movies') {
-      navigate('/');
-    }
-  }, [location.pathname, navigate]); */
 
   return (
     <Container>

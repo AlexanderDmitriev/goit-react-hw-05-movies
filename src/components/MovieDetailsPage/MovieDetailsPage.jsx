@@ -18,10 +18,13 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
+  console.log(location);
+
+
   useEffect(() => {
     API.getMovieDetails(movieId).then(response => {
       location.state={from:`${location.pathname}`};
-      if (response != null) {
+      if (response) {
         setMovieInfo(response.data);
       } else {
         setTimeout(() => {

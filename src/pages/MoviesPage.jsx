@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as API from '../services/api';
@@ -15,13 +15,26 @@ const MoviesPage = () => {
   const [loading, setLoading] = useState(false);
   const location = useLocation();
 
+  const [lastPage, setLastPage] = useState(() => {
+    return (
+      JSON.parse(window.localStorage.getItem('lastPage')) ?? '/'
+    );
+  });
+
+  useEffect(() => {
+    window.localStorage.setItem('lastPage', JSON.stringify(lastPage));
+    console.log(lastPage);
+  }, [lastPage]);
+
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };
 
   const handleSubmit = (values, { resetForm }) => {
+    location.state={from:`${location.pathname}`};
+    console.log(location.state);
     setLoading(true);
     API.getMovies(values.query).then(response => {
-      if (response != null) {
+      if (response) {
         setMovies(response.data.results);
         setLoading(false);
       } else {

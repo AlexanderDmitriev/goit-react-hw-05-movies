@@ -1,4 +1,5 @@
 import { useNavigate,useLocation } from 'react-router-dom';
+import React from 'react';
 import styled from '@emotion/styled';
 
 const GoBackButton = () => {
@@ -6,9 +7,10 @@ const GoBackButton = () => {
   const location = useLocation();
 
   const goBack = () => {
-    //navigate(location?.state?.from?.location??'/');
+    //navigate(`${location.state.from}`);
+    navigate(location?.state?.from??'/');
     console.log(location.state);
-    navigate(-1);
+    //navigate(-1);
   };
 
   return (
