@@ -19,8 +19,6 @@ const MoviesPage = () => {
   const initialValues = { query: '' };
 
   const handleSubmit = (values, { resetForm }) => {
-    location.state={from:`${location.pathname}`};
-    console.log(location.state);
     setLoading(true);
     API.getMovies(values.query).then(response => {
       if (response) {

@@ -1,20 +1,9 @@
-import { useNavigate,useLocation } from 'react-router-dom';
 import React from 'react';
 import styled from '@emotion/styled';
 
-const GoBackButton = () => {
-  const navigate = useNavigate();
-  const location = useLocation();
-
-  const goBack = () => {
-    //navigate(`${location.state.from}`);
-    navigate(location?.state?.from??'/');
-    console.log(location.state);
-    //navigate(-1);
-  };
-
+const GoBackButton = ({onClick}) => {
   return (
-    <CustomButton type="click" onClick={goBack}>
+    <CustomButton type="click" onClick={onClick}>
       Go back
     </CustomButton>
   );

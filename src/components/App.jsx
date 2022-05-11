@@ -1,14 +1,12 @@
 import {
   Route,
   Routes,
-  /* useNavigate, useLocation */
 } from 'react-router-dom';
-import { lazy, Suspense /* useEffect */ } from 'react';
+import { lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import GlobalStyle from '../GlobalStyle';
 import { Container, Spinner } from './AppStyled';
 import Navigation from '../components/Navigation/Navigation';
-import GoBackButton from '../components/GoBackButton';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const MoviesPage = lazy(() => import('../pages/MoviesPage'));
@@ -23,7 +21,6 @@ export const App = () => {
     <Container>
       <GlobalStyle />
       <Navigation />
-      <GoBackButton />
       <Suspense fallback={<Spinner />}>
         <Routes>
           <Route path="/" element={<HomePage />} />

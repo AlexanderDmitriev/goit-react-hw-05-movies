@@ -11,6 +11,7 @@ import {
 } from './MovieDetailsPageStyled';
 import {Spinner } from '../AppStyled';
 import { Outlet, useParams, useLocation,useNavigate } from "react-router-dom";
+import GoBackButton from '../GoBackButton/GoBackButton';
 
 const MovieDetailsPage = () => {
   const {movieId} = useParams();
@@ -18,19 +19,18 @@ const MovieDetailsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  console.log(location);
-
+  const goBack = () => {
+    navigate(location?.state?.from??'/');
+  };
 
   useEffect(() => {
     API.getMovieDetails(movieId).then(response => {
-      location.state={from:`${location.pathname}`};
       if (response) {
         setMovieInfo(response.data);
       } else {
         setTimeout(() => {
           navigate('/');
         }, 3000);
-        
         return;
       }
     });
@@ -40,7 +40,9 @@ const MovieDetailsPage = () => {
     <>
       {movieInfo ? (
         <>
+        <GoBackButton onClick={goBack}/>
           <MoviePageContent>
+            
             <Poster
               src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}
               alt={movieInfo.title}

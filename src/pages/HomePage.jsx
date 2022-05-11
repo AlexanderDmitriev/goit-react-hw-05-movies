@@ -15,8 +15,6 @@ const HomePage = () => {
 
   useEffect(() => {
     API.getTranding().then(response => {
-      location.state={from:`${location.pathname}`};
-      console.log(location);
       if (response != null) {
         setHotFilms(response.data);
       } else {
