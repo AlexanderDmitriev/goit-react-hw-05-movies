@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState,useEffect } from 'react';
+import { useLocation  } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as API from '../services/api';
 import { Spinner } from '../components/AppStyled';
@@ -11,9 +11,17 @@ import {
 } from '../components/MoviesPage/MoviesPageStyled';
 
 const MoviesPage = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState(() => {
+    return (
+      JSON.parse(window.localStorage.getItem('movies')) ?? null
+    );
+  });
   const [loading, setLoading] = useState(false);
   const location = useLocation();
+  
+  useEffect(() => {
+    window.localStorage.setItem('movies', JSON.stringify(movies));
+  }, [movies]);
 
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };

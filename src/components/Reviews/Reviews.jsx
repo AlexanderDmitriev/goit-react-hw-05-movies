@@ -14,7 +14,7 @@ const Reviews = () => {
   //Получаем даннык об актёрах и пока загружаем включаем спиннер
   useEffect(() => {
     API.getReviews(movieId).then(response => {
-      if (response != null) {
+      if (response) {
         setReview(response.data.results);
         if(response.data.results.length===0){
           setNoData(true);}

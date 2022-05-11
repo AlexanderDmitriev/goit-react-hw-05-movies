@@ -13,7 +13,7 @@ const Cast = () => {
 
   useEffect(() => {
     API.getCast(movieId).then(response => {
-      if (response != null) {
+      if (response) {
         setCast(response.data.cast);
         if(response.data.cast.length===0){
           setNoData(true);}

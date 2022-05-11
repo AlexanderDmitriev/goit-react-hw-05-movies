@@ -15,7 +15,7 @@ const HomePage = () => {
 
   useEffect(() => {
     API.getTranding().then(response => {
-      if (response != null) {
+      if (response) {
         setHotFilms(response.data);
       } else {
         return;

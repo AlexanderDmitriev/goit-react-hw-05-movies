@@ -5,7 +5,6 @@ import { BASIC_URL, PERSONAL_KEY } from './basicData';
 const getData = async url => {
   try {
     const response = await axios.get(url);
-    
     return response;
   } catch (error) {
     toast.error('Sorry, We don`t have this film`s information');
