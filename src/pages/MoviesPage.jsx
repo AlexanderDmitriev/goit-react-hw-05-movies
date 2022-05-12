@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react';
-import { useLocation  } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 import { Formik, Form } from 'formik';
 import * as API from '../services/api';
 import { Spinner } from '../components/AppStyled';
@@ -11,30 +11,38 @@ import {
 } from '../components/MoviesPage/MoviesPageStyled';
 
 const MoviesPage = () => {
-  const [movies, setMovies] = useState(() => {
-    return (
-      JSON.parse(window.localStorage.getItem('movies')) ?? null
-    );
-  });
+  const [movies, setMovies] = useState(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
-  
-  useEffect(() => {
-    window.localStorage.setItem('movies', JSON.stringify(movies));
-  }, [movies]);
+  const navigate = useNavigate();
+  let [queryWord, /* setQueryWord */] = useSearchParams();
+  let keyWord = queryWord.get('query');
 
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };
 
-  const handleSubmit = (values, { resetForm }) => {
+  const getData = key => {
     setLoading(true);
-    API.getMovies(values.query).then(response => {
+    API.getMovies(key).then(response => {
       if (response) {
         setMovies(response.data.results);
         setLoading(false);
       } else {
         return;
       }
+    });
+  };
+
+  useEffect(() => {
+    if (keyWord) {
+      getData(keyWord);
+    }
+  }, [keyWord]);
+
+  const handleSubmit = (values, { resetForm }) => {
+    getData(values.query);
+    navigate({
+      search: `?query=${values.query}`,
     });
     resetForm();
   };
@@ -60,7 +68,7 @@ const MoviesPage = () => {
             <FilmList key={film.id}>
               <FilmLink
                 to={`/movies/${film.id}`}
-                state = {{ from: location }}
+                state={{ from: location, search: keyWord }}
               >
                 {film.title} ({film.release_date.slice(0, 4)})
               </FilmLink>
