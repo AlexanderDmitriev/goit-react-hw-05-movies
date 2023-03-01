@@ -1,6 +1,7 @@
+import React from 'react';
 import MovieDetailsPage from '../components/MovieDetailsPage';
 
-const MovieDataPage = () => {
+const MovieDataPage: React.FunctionComponent = () => {
   return (
     <div>
       <MovieDetailsPage />

@@ -21,7 +21,7 @@ const MoviesPage = () => {
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };
 
-  const getData = key => {
+  const getData = (key) => {
     setLoading(true);
     API.getMovies(key).then(response => {
       if (response) {
