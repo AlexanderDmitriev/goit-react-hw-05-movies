@@ -11,12 +11,12 @@ const getData = async (url:string):Promise<any> => {
   }
 };
 
-export const getReviews = (movieId:string):Promise<any> => {
+export const getReviews = (movieId:string|undefined):Promise<any> => {
   const url:string = `${BASIC_URL}3/movie/${movieId}/reviews?api_key=${PERSONAL_KEY}&language=en-US&page=1`;
   return getData(url);
 };
 
-export const getMovieDetails = (movieId:string):Promise<any> => {
+export const getMovieDetails = (movieId:string|undefined):Promise<any> => {
   const url:string = `${BASIC_URL}3/movie/${movieId}?api_key=${PERSONAL_KEY}&language=en-US&page=1`;
   return getData(url);
 };

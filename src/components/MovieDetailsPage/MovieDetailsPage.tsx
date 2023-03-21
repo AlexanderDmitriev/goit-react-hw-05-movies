@@ -7,20 +7,33 @@ import {
   GenresItem,
   MoviePageContent,
   MoviePageDescription,
-  DetailsLink
+  DetailsLink,
 } from './MovieDetailsPageStyled';
-import {Spinner } from '../AppStyled';
-import { Outlet, useParams, useLocation,useNavigate } from "react-router-dom";
+import { Spinner } from '../AppStyled';
+import {
+  Outlet,
+  useParams,
+  useLocation,
+  useNavigate,
+  NavigateFunction,
+} from 'react-router-dom';
 import GoBackButton from '../GoBackButton/GoBackButton';
+import {IMovieInfo} from "./IMovieInfo";
 
-const MovieDetailsPage = () => {
-  const {movieId} = useParams();
-  const [movieInfo, setMovieInfo] = useState(null);
-  const navigate = useNavigate();
-  const location = useLocation();
+type LocationProps = {
+  state: {
+    from: Location;
+  };
+};
+
+const MovieDetailsPage: React.FunctionComponent = () => {
+  const { movieId } = useParams();
+  const [movieInfo, setMovieInfo] = useState<IMovieInfo | null>(null);
+  const navigate: NavigateFunction = useNavigate();
+  const location = useLocation() as LocationProps;
 
   const goBack = () => {
-    navigate(location?.state?.from??'/');
+    navigate(location?.state?.from ?? '/');
   };
 
   useEffect(() => {
@@ -40,9 +53,8 @@ const MovieDetailsPage = () => {
     <>
       {movieInfo ? (
         <>
-        <GoBackButton onClick={goBack}/>
+          <GoBackButton onClick={goBack} />
           <MoviePageContent>
-            
             <Poster
               src={`https://image.tmdb.org/t/p/original${movieInfo.poster_path}`}
               alt={movieInfo.title}
@@ -69,9 +81,9 @@ const MovieDetailsPage = () => {
           </ul>
         </>
       ) : (
-        <Spinner/>
+        <Spinner />
       )}
-      <Outlet/>
+      <Outlet />
     </>
   );
 };
