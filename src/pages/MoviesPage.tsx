@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
-import { Formik, Form } from 'formik';
+import { Formik, Form,FormikHelpers  } from 'formik';
 import * as API from '../services/api';
 import { Spinner } from '../components/AppStyled';
 import {
@@ -9,9 +9,10 @@ import {
   FilmList,
   FilmLink,
 } from '../components/MoviesPage/MoviesPageStyled';
+import {IMovies} from '../components/Interfaces/IMovies';
 
-const MoviesPage = () => {
-  const [movies, setMovies] = useState(null);
+const MoviesPage: React.FunctionComponent = () => {
+  const [movies, setMovies] = useState<Array<IMovies>|null>(null);
   const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const MoviesPage = () => {
   //При начальном рендере ключевое слово для поиска пустая строка
   const initialValues = { query: '' };
 
-  const getData = (key) => {
+  const getData = (key:string) => {
     setLoading(true);
     API.getMovies(key).then(response => {
       if (response) {
@@ -39,7 +40,7 @@ const MoviesPage = () => {
     }
   }, [keyWord]);
 
-  const handleSubmit = (values, { resetForm }) => {
+  const handleSubmit = (values: typeof initialValues, { resetForm }:FormikHelpers<any>) => {
     getData(values.query);
     navigate({
       search: `?query=${values.query}`,
@@ -70,7 +71,7 @@ const MoviesPage = () => {
                 to={`/movies/${film.id}`}
                 state={{ from: location, search: keyWord }}
               >
-                {film.title} ({film.release_date.slice(0, 4)})
+                {film.title} ({film?.release_date?.slice(0, 4)})
               </FilmLink>
             </FilmList>
           ))}

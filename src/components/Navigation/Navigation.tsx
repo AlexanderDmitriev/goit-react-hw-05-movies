@@ -1,10 +1,11 @@
+import React from 'react';
 import {NavigationContainer,NavigationLink} from './NavigationStyled';
 
-const Navigation = () => {
+const Navigation: React.FunctionComponent = () => {
   return (
     <header>
       <NavigationContainer>
-        <NavigationLink exact="true" to="/">
+        <NavigationLink end to="/">
           Home
         </NavigationLink>
 

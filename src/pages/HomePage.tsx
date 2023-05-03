@@ -7,10 +7,11 @@ import {
   HotFilmItem,
   HomePageTitle,
 } from '../components/HomePage/HomePageStyled';
+import { IHotFilms } from '../components/Interfaces/IHotFilms';
 
-const HomePage = () => {
+const HomePage: React.FunctionComponent = () => {
   //Хук для хранения трендовых фильмов
-  const [hotFilms, setHotFilms] = useState(null);
+  const [hotFilms, setHotFilms] = useState<IHotFilms | null>(null);
   const location = useLocation();
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const HomePage = () => {
       } else {
         return;
       }
-    })
+    });
   }, [location]);
 
   return (
@@ -30,10 +31,7 @@ const HomePage = () => {
         <ul>
           {hotFilms.results.map(film => (
             <HotFilmItem key={film.id}>
-              <HotFilmLink
-                to={`/movies/${film.id}`}
-                state = {{ from: location }}
-              >
+              <HotFilmLink to={`/movies/${film.id}`} state={{ from: location }}>
                 {film.title}
                 {film.name}
               </HotFilmLink>

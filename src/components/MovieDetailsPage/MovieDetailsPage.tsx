@@ -18,13 +18,8 @@ import {
   NavigateFunction,
 } from 'react-router-dom';
 import GoBackButton from '../GoBackButton/GoBackButton';
-import {IMovieInfo} from "./IMovieInfo";
-
-type LocationProps = {
-  state: {
-    from: Location;
-  };
-};
+import {IMovieInfo} from "../Interfaces/IMovieInfo";
+import {LocationProps} from '../Interfaces/LocationProps';
 
 const MovieDetailsPage: React.FunctionComponent = () => {
   const { movieId } = useParams();

@@ -1,26 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import * as API from '../../services/api';
 import { CastItem } from './CastItem';
-import { CastText,ActorsList } from './CastStyled';
+import { CastText, ActorsList } from './CastStyled';
 import { Spinner } from '../AppStyled';
+import { ICastItem } from '../Interfaces/ICastItem';
 
-const Cast = () => {
-  const [cast, setCast] = useState(null);
+const Cast: React.FunctionComponent = () => {
+  const [cast, setCast] = useState<Array<ICastItem> | null>(null);
   const [noData, setNoData] = useState(false);
   const { movieId } = useParams();
 
   useEffect(() => {
-    API.getCast(movieId).then(response => {
-      if (response) {
-        setCast(response.data.cast);
-        if(response.data.cast.length===0){
-          setNoData(true);}
-      } else {
-        return;
-      }
-    });
+    if (movieId) {
+      API.getCast(movieId).then(response => {
+        if (response) {
+          setCast(response.data.cast);
+          if (response.data.cast.length === 0) {
+            setNoData(true);
+          }
+        } else {
+          return;
+        }
+      });
+    }
   }, [movieId]);
 
   return (
@@ -46,12 +49,6 @@ const Cast = () => {
       )}
     </>
   );
-};
-
-CastItem.propTypes = {
-  photo: PropTypes.string,
-  name: PropTypes.string,
-  character: PropTypes.string,
 };
 
 export default Cast;

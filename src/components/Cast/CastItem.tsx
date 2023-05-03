@@ -1,7 +1,10 @@
+import React from 'react';
 import { HiOutlineEmojiHappy } from 'react-icons/hi';
 import { CastStyledItem, CastText, ActorsPhoto } from './CastStyled';
+import {ICastItem} from '../Interfaces/ICastItem';
 
-export const CastItem = ({ photo, name, character }) => {
+export const CastItem: React.FunctionComponent<ICastItem> = ({ photo, name, character }) => {
+
   return (
     <CastStyledItem>
       {photo ? (
