@@ -6,9 +6,7 @@ import './index.css';
 import { ThemeProvider } from '@emotion/react';
 import { theme } from './components/theme';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>

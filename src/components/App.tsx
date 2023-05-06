@@ -1,12 +1,10 @@
-import {
-  Route,
-  Routes,
-} from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import { Toaster } from 'react-hot-toast';
 import GlobalStyle from '../GlobalStyle';
 import { Container, Spinner } from './AppStyled';
-import Navigation from '../components/Navigation/Navigation';
+import Navigation from './Navigation/Navigation';
+import React from 'react';
 
 const HomePage = lazy(() => import('../pages/HomePage'));
 const MoviesPage = lazy(() => import('../pages/MoviesPage'));
@@ -16,7 +14,6 @@ const Reviews = lazy(() => import('./Reviews'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
 export const App = () => {
-
   return (
     <Container>
       <GlobalStyle />
